@@ -1,5 +1,10 @@
 package entidades;
 
-public class Programa {
+import boardgame.Position;
 
+public class Programa {
+	Position pos = new Position(3, 5);
+	private void Sysout() {
+
+	}
 }
