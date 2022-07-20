@@ -27,8 +27,23 @@ public class PartidaDeXadez {
 	}
 	
 	private void iniciarPartida() {
-		colocandoNovaPeca('b', 6, new Torre(tabuleiro, Cores.WHITE));
-		colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK));
-		colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE));
+		colocandoNovaPeca('c', 1, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('c', 2, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('d', 2, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('e', 2, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('e', 1, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('d', 1, new Rei(tabuleiro, Cores.WHITE));
+
+        colocandoNovaPeca('c', 7, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('c', 8, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('d', 7, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('e', 7, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('e', 8, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('d', 8, new Rei(tabuleiro, Cores.BLACK));
 		}
 }
+/*
+ * colocandoNovaPeca('b', 6, new Torre(tabuleiro, Cores.WHITE));
+ * colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK));
+ * colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE));
+ */
