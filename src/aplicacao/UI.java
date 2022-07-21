@@ -1,7 +1,11 @@
 package aplicacao;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.Cores;
 import xadrez.PecaDeXadrez;
+import xadrez.PosicaoXadrez;
 
 public class UI {
 //Cores dos textos
@@ -23,6 +27,19 @@ public class UI {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+	
+	public static PosicaoXadrez LerPosicaoDoXadrez(Scanner sc) {
+		try {
+			String s = sc.nextLine();
+			char coluna = s.charAt(0);
+			//recotando o String apartir da posição 1 e covertendo para inteiro
+			int linha = Integer.parseInt(s.substring(1));
+			return new PosicaoXadrez(coluna, linha);
+		}
+		catch (RuntimeException e) {
+			throw new InputMismatchException("Erro lendo pisição de xadrez. Valores válidos são de a1 até h8");
+		}
+	}
 	
 	public static void printPartida(PecaDeXadrez[][] pecas) {
 		for (int i=0; i<pecas.length; i++) {
