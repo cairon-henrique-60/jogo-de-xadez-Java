@@ -1,7 +1,7 @@
 package boardgame;
 
 public class Peca {
-	protected Position positon;
+	protected Position position;
 	private Tabuleiro tabuleiro;
 	
 	/*
@@ -13,6 +13,6 @@ public class Peca {
 	}
 
 	protected Position getPositon() {
-		return positon;
+		return position;
 	}
 }
