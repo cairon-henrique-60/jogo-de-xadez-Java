@@ -24,6 +24,12 @@ public class PartidaDeXadez {
 		return mat;
 	}
 	
+	public boolean[][] movimentosPossiveis(PosicaoXadrez posicaoDePatida) {
+		Position position = posicaoDePatida.toPosition();
+		validandoPosicao(position);
+		return tabuleiro.peca(position).movimentosPossiveis();
+	}
+	
 	public PecaDeXadrez performaceParaMover(PosicaoXadrez posicaoDeOrigem, PosicaoXadrez posicaoDeDestino) {
 		Position partida = posicaoDeOrigem.toPosition();
 		Position destino = posicaoDeDestino.toPosition();
@@ -75,8 +81,3 @@ public class PartidaDeXadez {
         colocandoNovaPeca('d', 8, new Rei(tabuleiro, Cores.BLACK));
 		}
 }
-/*
- * colocandoNovaPeca('b', 6, new Torre(tabuleiro, Cores.WHITE));
- * colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK));
- * colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE));
- */
