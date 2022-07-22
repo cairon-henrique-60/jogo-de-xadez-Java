@@ -19,14 +19,17 @@ public class Programa {
 				UI.limpandoTerminal();
 				UI.printPartida(partidaDeXadez.getPecas());
 				System.out.println();
+				System.out.println();
 				System.out.print("Partida: ");
 				PosicaoXadrez partida = UI.LerPosicaoDoXadrez(sc);
 				
+				boolean[][] movimentosPossiveis = partidaDeXadez.movimentosPossiveis(partida);
+				UI.limpandoTerminal();
+				UI.printPartida(partidaDeXadez.getPecas(), movimentosPossiveis);
 				System.out.println();
 				System.out.print("Destino: ");
 				PosicaoXadrez destino = UI.LerPosicaoDoXadrez(sc);
-				
-				
+		
 				PecaDeXadrez capturaPeca = partidaDeXadez.performaceParaMover(partida, destino);
 			}
 			catch (ExcecoesXadrez e) {
