@@ -17,7 +17,7 @@ public class Programa {
 		while (true) {
 			try {
 				UI.limpandoTerminal();
-				UI.printPartida(partidaDeXadez.getPecas());
+				UI.printXabrez(partidaDeXadez);
 				System.out.println();
 				System.out.println();
 				System.out.print("Partida: ");
@@ -26,6 +26,7 @@ public class Programa {
 				boolean[][] movimentosPossiveis = partidaDeXadez.movimentosPossiveis(partida);
 				UI.limpandoTerminal();
 				UI.printPartida(partidaDeXadez.getPecas(), movimentosPossiveis);
+				System.out.println();
 				System.out.println();
 				System.out.print("Destino: ");
 				PosicaoXadrez destino = UI.LerPosicaoDoXadrez(sc);
