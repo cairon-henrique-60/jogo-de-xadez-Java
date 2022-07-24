@@ -1,5 +1,8 @@
 package xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Peca;
 import boardgame.Position;
 import boardgame.Tabuleiro;
@@ -10,6 +13,10 @@ public class PartidaDeXadez {
 	private int turno;
 	private Cores jogadorAtual;
 	private Tabuleiro tabuleiro;
+	
+	private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+	private List<Peca> pecasCapturadas = new ArrayList<>();
+
 	
 	public PartidaDeXadez() {
 		tabuleiro = new Tabuleiro(8, 8);
@@ -56,6 +63,12 @@ public class PartidaDeXadez {
 		Peca p = tabuleiro.removerPeca(partida);
 		Peca capturaPeca = tabuleiro.removerPeca(destino);
 		tabuleiro.lugarDaPeca(p, destino);
+		//condicional para testar se o movimento capturou alguma peça adverssária
+		if (capturaPeca != null) {
+			pecasNoTabuleiro.remove(capturaPeca);
+			pecasCapturadas.add(capturaPeca);
+		}
+		
 		return  capturaPeca;
 	}
 	
@@ -84,6 +97,7 @@ public class PartidaDeXadez {
 	
 	private void colocandoNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
 		tabuleiro.lugarDaPeca(peca, new PosicaoXadrez(coluna, linha).toPosition());
+		pecasNoTabuleiro.add(peca);
 	}
 	
 	private void iniciarPartida() {
