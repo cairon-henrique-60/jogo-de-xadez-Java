@@ -58,9 +58,15 @@ public class UI {
 		printaAsPecasCapturadas(captura);
 		System.out.println();
 		System.out.println("Turno: " + partidaDeXadez.getTurno());
-		System.out.println("Aguardando jogador: " + partidaDeXadez.getJogadorAtual());
-		if (partidaDeXadez.getCheck()) {
-			System.out.println("CHECK!");
+		if (!partidaDeXadez.getCheckMate()) {
+			System.out.println("Aguardando jogador: " + partidaDeXadez.getJogadorAtual());
+			if (partidaDeXadez.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Vencedor: " + partidaDeXadez.getJogadorAtual());
 		}
 	}
 	
@@ -72,7 +78,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.print("  a b c e f g h");
+		System.out.print("  a b c d e f g h");
 	}
 	
 	public static void printPartida(PecaDeXadrez[][] pecas, boolean[][] movimentosPossiveis) {
@@ -83,7 +89,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.print("  a b c e f g h");
+		System.out.print("  a b c d e f g h");
 	}
 	
 	private static void printPeca(PecaDeXadrez peca, boolean background) {
