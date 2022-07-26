@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import boardgame.Peca;
 import boardgame.Position;
 import boardgame.Tabuleiro;
+import xadrez.pecas.Peao;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
@@ -203,11 +204,29 @@ public class PartidaDeXadez {
 	}
 	
 	private void iniciarPartida() {
-		colocandoNovaPeca('h', 7, new Torre(tabuleiro, Cores.WHITE));
-        colocandoNovaPeca('d', 1, new Torre(tabuleiro, Cores.WHITE));
+		
+        colocandoNovaPeca('a', 1, new Torre(tabuleiro, Cores.WHITE));
         colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE));
-
-        colocandoNovaPeca('b', 8, new Torre(tabuleiro, Cores.BLACK));
-        colocandoNovaPeca('a', 8, new Rei(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('h', 1, new Torre(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('a', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('b', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('c', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('d', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('e', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('f', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('g', 2, new Peao(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('h', 2, new Peao(tabuleiro, Cores.WHITE));
+       
+        colocandoNovaPeca('a', 8, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('h', 8, new Torre(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('a', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('b', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('c', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('d', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('e', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('f', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('g', 7, new Peao(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('h', 7, new Peao(tabuleiro, Cores.BLACK));
 		}
 }
