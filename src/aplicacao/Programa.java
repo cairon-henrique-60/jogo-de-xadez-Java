@@ -39,6 +39,12 @@ public class Programa {
 				if (capturaPeca != null) {
 					captura.add(capturaPeca);
 				}
+				
+				if (partidaDeXadez.getPromocao() != null) {
+					System.out.print("Digite a letra da peca que vc deseja promover (B/C/R/T): ");
+					String tipo = sc.nextLine();
+					partidaDeXadez.substituirPecaPromovida(tipo);
+				}
 			}
 			catch (ExcecoesXadrez e) {
 				System.out.println(e.getMessage());
