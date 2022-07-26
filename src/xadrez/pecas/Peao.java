@@ -57,7 +57,12 @@ public class Peao extends PecaDeXadrez{
 			}
 		}
 		
-		return null;
+		return mat;
+	}
+	
+	@Override
+	public String toString() {
+		return "p";
 	}
 
 }
