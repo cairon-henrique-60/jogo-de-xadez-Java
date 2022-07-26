@@ -42,7 +42,11 @@ public class Programa {
 				
 				if (partidaDeXadez.getPromocao() != null) {
 					System.out.print("Digite a letra da peca que vc deseja promover (B/C/R/T): ");
-					String tipo = sc.nextLine();
+					String tipo = sc.nextLine().toUpperCase();
+					while (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("T") && !tipo.equals("R")) {
+						System.out.print("Valor invalido! Digite a letra da peca que vc deseja promover (B/C/R/T): ");
+						tipo = sc.nextLine().toUpperCase();
+					}
 					partidaDeXadez.substituirPecaPromovida(tipo);
 				}
 			}
