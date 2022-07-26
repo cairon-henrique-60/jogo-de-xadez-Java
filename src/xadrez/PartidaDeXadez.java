@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 import boardgame.Peca;
 import boardgame.Position;
 import boardgame.Tabuleiro;
+import xadrez.pecas.Bispo;
+import xadrez.pecas.Cavalo;
 import xadrez.pecas.Peao;
+import xadrez.pecas.Rainha;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
@@ -100,6 +103,22 @@ public class PartidaDeXadez {
 			pecasNoTabuleiro.remove(capturaPeca);
 			pecasCapturadas.add(capturaPeca);
 		}
+		//#Moviemento especial Castling Rook pequeno
+		if (p instanceof Rei && destino.getColuna() == partida.getColuna()+2) {
+			Position origenDaTorre = new Position(partida.getLinha(), partida.getColuna()+3);
+			Position destinoDaTorre = new Position(partida.getLinha(), partida.getColuna()+1);
+			PecaDeXadrez torre = (PecaDeXadrez)tabuleiro.removerPeca(origenDaTorre);
+			tabuleiro.lugarDaPeca(torre, destinoDaTorre);
+			torre.aumentandoContatorDeMovimento();
+		}
+		//#Moviemento especial Castling Rook grande
+		if (p instanceof Rei && destino.getColuna() == partida.getColuna()-2) {
+			Position origenDaTorre = new Position(partida.getLinha(), partida.getColuna()-4);
+			Position destinoDaTorre = new Position(partida.getLinha(), partida.getColuna()-1);
+			PecaDeXadrez torre = (PecaDeXadrez)tabuleiro.removerPeca(origenDaTorre);
+			tabuleiro.lugarDaPeca(torre, destinoDaTorre);
+			torre.aumentandoContatorDeMovimento();
+		}
 		
 		return  capturaPeca;
 	}
@@ -114,6 +133,23 @@ public class PartidaDeXadez {
 			tabuleiro.lugarDaPeca(capturaPeca, destino);
 			pecasCapturadas.remove(capturaPeca);
 			pecasNoTabuleiro.add(capturaPeca);
+		}
+		
+		//#Moviemento especial Castling Rook pequeno
+		if (p instanceof Rei && destino.getColuna() == partida.getColuna()+2) {
+			Position origenDaTorre = new Position(partida.getLinha(), partida.getColuna()+3);
+			Position destinoDaTorre = new Position(partida.getLinha(), partida.getColuna()+1);
+			PecaDeXadrez torre = (PecaDeXadrez)tabuleiro.removerPeca(destinoDaTorre);
+			tabuleiro.lugarDaPeca(torre, origenDaTorre);
+			torre.diminuindoContadoDeMovimento();;
+		}
+		//#Moviemento especial Castling Rook grande
+		if (p instanceof Rei && destino.getColuna() == partida.getColuna()-2) {
+			Position origenDaTorre = new Position(partida.getLinha(), partida.getColuna()-4);
+			Position destinoDaTorre = new Position(partida.getLinha(), partida.getColuna()-1);
+			PecaDeXadrez torre = (PecaDeXadrez)tabuleiro.removerPeca(destinoDaTorre);
+			tabuleiro.lugarDaPeca(torre, origenDaTorre);
+			torre.diminuindoContadoDeMovimento();
 		}
 	}
 	
@@ -206,7 +242,12 @@ public class PartidaDeXadez {
 	private void iniciarPartida() {
 		
         colocandoNovaPeca('a', 1, new Torre(tabuleiro, Cores.WHITE));
-        colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('b', 1, new Cavalo(tabuleiro, Cores.WHITE)); 
+        colocandoNovaPeca('c', 1, new Bispo(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('d', 1, new Rainha(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cores.WHITE, this));
+        colocandoNovaPeca('f', 1, new Bispo(tabuleiro, Cores.WHITE));
+        colocandoNovaPeca('g', 1, new Cavalo(tabuleiro, Cores.WHITE)); 
         colocandoNovaPeca('h', 1, new Torre(tabuleiro, Cores.WHITE));
         colocandoNovaPeca('a', 2, new Peao(tabuleiro, Cores.WHITE));
         colocandoNovaPeca('b', 2, new Peao(tabuleiro, Cores.WHITE));
@@ -218,7 +259,12 @@ public class PartidaDeXadez {
         colocandoNovaPeca('h', 2, new Peao(tabuleiro, Cores.WHITE));
        
         colocandoNovaPeca('a', 8, new Torre(tabuleiro, Cores.BLACK));
-        colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('b', 8, new Cavalo(tabuleiro, Cores.BLACK)); 
+        colocandoNovaPeca('c', 8, new Bispo(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('d', 8, new Rainha(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cores.BLACK, this));
+        colocandoNovaPeca('f', 8, new Bispo(tabuleiro, Cores.BLACK));
+        colocandoNovaPeca('g', 8, new Cavalo(tabuleiro, Cores.BLACK)); 
         colocandoNovaPeca('h', 8, new Torre(tabuleiro, Cores.BLACK));
         colocandoNovaPeca('a', 7, new Peao(tabuleiro, Cores.BLACK));
         colocandoNovaPeca('b', 7, new Peao(tabuleiro, Cores.BLACK));
