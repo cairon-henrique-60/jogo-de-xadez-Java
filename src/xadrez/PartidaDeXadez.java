@@ -90,7 +90,8 @@ public class PartidaDeXadez {
 	}
 	
 	private Peca Mover(Position partida, Position destino) {
-		Peca p = tabuleiro.removerPeca(partida);
+		PecaDeXadrez p = (PecaDeXadrez)tabuleiro.removerPeca(partida);
+		p.aumentandoContatorDeMovimento();
 		Peca capturaPeca = tabuleiro.removerPeca(destino);
 		tabuleiro.lugarDaPeca(p, destino);
 		//condicional para testar se o movimento capturou alguma peça adverssária
@@ -104,7 +105,8 @@ public class PartidaDeXadez {
 	
 	//metodo para desfazer o movimento
 	private void desfazerMovimento(Position partida, Position destino, Peca capturaPeca) {
-		Peca p = tabuleiro.removerPeca(destino);
+		PecaDeXadrez p = (PecaDeXadrez)tabuleiro.removerPeca(destino);
+		p.diminuindoContadoDeMovimento();
 		tabuleiro.lugarDaPeca(p, partida);
 		
 		if(capturaPeca != null) {
